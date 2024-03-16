@@ -10,9 +10,9 @@ It produces the following equations:
 ```
 b = a + 3,  c = b / 2,  d = c + 13, d = ?
 ```
-These equations are not solvable by sympy, so the final answer is `no solution`. The desired equations should have `a = ?` instead of `d = ?` at the end. Upon examining the prompt, it is found that the prompt is designed to solve math word problems that have the last variable as the answer. That's why it generates the last equation as `d = ?`.
+These equations are not solvable by sympy, so the final answer is `no solution`. The desired equations should have `a = ?` instead of `d = ?` at the end (and `c = 13`, not `d = c + 13`). Upon examining the prompt, it is clear that the prompt is designed to solve math word problems that have a sequential flow, with last variable as the answer. That's why it generates the last equation as `d = ?`.
 
-This suggests it might be helpful to add an example of a problem where the last variable is not the answer, but the first variable is the answer. The following example is added to the prompt:
+This suggests it might be helpful to add an example of a problem where the last variable is not the answer. The following example is added to the prompt:
 ```
 Q: Mary has some apples. If she is given 2 apples,
  and then half of her apples was taken away, she
