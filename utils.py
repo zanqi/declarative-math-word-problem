@@ -1,4 +1,6 @@
-import openai
+from openai import OpenAI
+
+client = OpenAI()
 import re
 import numpy as np
 from sympy import solve, sympify, Symbol
@@ -35,23 +37,21 @@ def reformat_equations_from_peano(eq_list):
 def get_declarative_equations(model, question, prompt, max_tokens, stop_token, temperature):
     prompt = prompt.format(question=question)
     
-    response = openai.Completion.create(
-        model = model,
-        prompt = prompt,
-        max_tokens = max_tokens,
-        stop = stop_token,
-        temperature = temperature,
-        top_p = 1
-    )           
+    response = client.completions.create(model = model,
+    prompt = prompt,
+    max_tokens = max_tokens,
+    stop = stop_token,
+    temperature = temperature,
+    top_p = 1)           
 
-    result = response['choices'][0]['text']
+    result = response.choices[0].text
     eq_list = re.findall(r'\[\[.*?\]\]', result)
     if len(eq_list) > 0:            
         return reformat_equations_from_peano(reformat_incre_equations(eq_list))
     else:
         print()
-        print(response['choices'][0]['text'])
-        return response['choices'][0]['text']
+        print(response.choices[0].text)
+        return response.choices[0].text
 
 
 def get_final_using_sympy(equations):

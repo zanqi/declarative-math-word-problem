@@ -73,6 +73,17 @@ The answer is the value of d [[answer d]].
 
 
 
+Q: Mary has some apples. If she is given 2 apples, and then half of her apples was taken away, she will be left with 10 apples. How many apples does she have?
+
+Let a be the number of apples Mary started with [[var a]]. 
+Let b be how many apples she had after being given 2 apples [[var b]]. We have [[eq b = a + 2]].
+Let c be how many apples she had after half of her apples was taken away [[var c]]. We have [[eq c = b / 2]]. We also have [[eq c = 10]].
+The answer is the value of a [[answer a]].
+
+
+
+
+
 Q: Mario and Luigi together had 10 years of experience in soccer. Luigi had 3 more than Mario. How many did Mario have?
 
 Peano solution:
